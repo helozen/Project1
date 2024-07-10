@@ -2,6 +2,16 @@ INSTALLED_APPS = [
     # Other apps
     'rest_framework',
     'core',
+    'corsheaders',
+]
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    # Other middleware
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',  # React app URL
 ]
 
 REST_FRAMEWORK = {
