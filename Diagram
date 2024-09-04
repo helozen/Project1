@@ -1,0 +1,96 @@
+"Copy the commands and paste here to see the diagram..."
+https://www.plantuml.com/
+
+
+
+@startuml
+start
+:User visits website;
+:User chooses to register;
+if (User type?) then (Customer)
+  :User fills out customer registration form;
+  if (Input valid?) then (yes)
+    :System creates customer account;
+    :User receives confirmation email;
+    :User confirms email;
+    :Customer logs in;
+  else (no)
+    :Error message;
+    stop
+  endif
+else (Tradesperson)
+  :User fills out tradesperson registration form;
+  if (Input valid?) then (yes)
+    :System creates tradesperson account;
+    :User receives confirmation email;
+    :User confirms email;
+    :Tradesperson logs in;
+    :Tradesperson submits skill and shop verification documents;
+    :Admin verifies documents;
+    if (Documents verified?) then (yes)
+      :Account is activated;
+      :Tradesperson navigates to profile settings;
+      :Tradesperson updates profile information;
+      :Tradesperson saves changes;
+      :System updates profile;
+    else (no)
+      :Request additional information or reject account;
+      stop
+    endif
+  else (no)
+    :Error message;
+    stop
+  endif
+endif
+
+
+:Customer visits website;
+:Customer uses search bar or filters;
+:System takes permission for location access;
+:System displays search results in his area;
+:Customer views tradesperson profiles;
+:Customer selects a tradesperson;
+
+
+if (Option to get the service) then (Option 1)
+  :Gets an option to book;
+  :Customer selects service and date/time;
+  :Customer chooses a tradesperson;
+if (Tradesperson available?) then (yes)
+  :System confirms booking details;
+  :Customer confirms booking;
+  :System sends booking confirmation to both parties;
+else (no)
+  :Error message;
+  stop
+endif
+
+
+:Customer proceeds to payment;
+:Customer enters payment details;
+:System processes payment;
+if (Payment successful?) then (yes)
+  :System confirms payment;
+  :System updates booking status to "paid";
+else (no)
+  :Error message;
+  stop
+endif
+
+else (Option 2)
+  :Customer chooses to visit shop;
+  :Customer gets the shop addrees/information;
+endif
+
+:Tradesperson receives booking notification;
+:Tradesperson performs the service;
+:Tradesperson marks service as complete;
+:Customer confirms service completion;
+
+:Customer receives notification to review service;
+:Customer leaves a rating and review;
+:System updates tradesperson's profile with new rating/review;
+:Tradesperson can view feedback;
+
+stop
+@enduml
